@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07111f">
+  <title>Global AI Trader</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #07111f;
+      color: #f1f5f9;
+      padding: 18px;
+    }
+
+    header {
+      padding: 20px 0;
+      border-bottom: 1px solid #263448;
+      margin-bottom: 22px;
+    }
+
+    header h1 {
+      font-size: 25px;
+      color: #38bdf8;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    .notice {
+      background: #332b16;
+      color: #fde68a;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .panel {
+      background: #111e30;
+      border: 1px solid #263448;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 7px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 13px;
+      border-radius: 9px;
+      border: 1px solid #334155;
+      font-size: 15px;
+    }
+
+    select {
+      background: #07111f;
+      color: white;
+    }
+
+    button {
+      margin-top: 16px;
+      background: #0284c7;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      opacity: 0.8;
+    }
+
+    .signal {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .muted {
+      color: #94a3b8;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      background: #07111f;
+      border-radius: 10px;
+      padding: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .metric span {
+      display: block;
+      color: #94a3b8;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .metric strong {
+      font-size: 17px;
+    }
+
+    footer {
+      color: #94a3b8;
+      text-align: center;
+      font-size: 12px;
+      padding: 20px 0;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🌍 Global AI Trader</h1>
+    <p>Market Analysis & Risk Management Dashboard</p>
+  </header>
+
+  <div class="notice">
+    DEMO VERSION: This dashboard does not use live market data.
+    Signals are educational examples, not financial advice.
+  </div>
+
+  <section class="panel">
+    <h2>📊 Market Analysis</h2>
+
+    <label for="market">Select Market</label>
+    <select id="market">
+      <option value="stocks">Stock Market</option>
+      <option value="options">Stock Options</option>
+      <option value="forex">Forex Market</option>
+    </select>
+
+    <label for="asset">Select Instrument</label>
+    <select id="asset">
+      <option value="NIFTY">NIFTY 50 — Demo</option>
+      <option value="SP500">S&P 500 — Demo</option>
+      <option value="EURUSD">EUR/USD — Demo</option>
+      <option value="GBPUSD">GBP/USD — Demo</option>
+    </select>
+
+    <label for="timeframe">Timeframe</label>
+    <select id="timeframe">
+      <option>5 Minutes</option>
+      <option>15 Minutes</option>
+      <option>1 Hour</option>
+      <option>4 Hours</option>
+      <option>1 Day</option>
+    </select>
+
+    <button id="analyze">View Demo Analysis</button>
+  </section>
+
+  <section class="panel">
+    <h2>🤖 Analysis Result</h2>
+    <p class="muted" id="instrument">Instrument: NIFTY</p>
+    <div class="signal" id="signal">🟡 NO TRADE</div>
+    <p class="muted" id="explanation">
+      No live market data connected. No trading recommendation is available.
+    </p>
+  </section>
+
+  <section class="panel">
+    <h2>📈 Technical Indicators</h2>
+    <div class="grid">
+      <div class="metric">
+        <span>RSI</span>
+        <strong>Not Available</strong>
+      </div>
+      <div class="metric">
+        <span>MACD</span>
+        <strong>Not Available</strong>
+      </div>
+      <div class="metric">
+        <span>Entry Price</span>
+        <strong>Not Available</strong>
+      </div>
+      <div class="metric">
+        <span>Stop Loss</span>
+        <strong>Not Available</strong>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Global AI Trader · Early Prototype<br>
+    Market data and AI analysis are not yet connected.<br>
+    Never trade using unverified demo signals.
+  </footer>
+
+  <script>
+    const analyzeButton = document.getElementById("analyze");
+
+    analyzeButton.addEventListener("click", function () {
+      const market = document.getElementById("market");
+      const asset = document.getElementById("asset");
+      const timeframe = document.getElementById("timeframe");
+
+      document.getElementById("instrument").textContent =
+        "Instrument: " + asset.value + " | " +
+        market.options[market.selectedIndex].text +
+        " | " + timeframe.value;
+
+      document.getElementById("signal").textContent =
+        "🟡 NO TRADE";
+
+      document.getElementById("explanation").textContent =
+        "Demo only. Live market data and a tested analysis engine " +
+        "must be connected before any real trading signal can be generated.";
+    });
+  </script>
+</body>
+</html>
