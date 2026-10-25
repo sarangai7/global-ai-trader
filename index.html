@@ -1,242 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#07111f">
-  <title>Global AI Trader</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background: #07111f;
-      color: #f1f5f9;
-      padding: 18px;
-    }
-
-    header {
-      padding: 20px 0;
-      border-bottom: 1px solid #263448;
-      margin-bottom: 22px;
-    }
-
-    header h1 {
-      font-size: 25px;
-      color: #38bdf8;
-    }
-
-    header p {
-      margin-top: 8px;
-      color: #94a3b8;
-      font-size: 14px;
-    }
-
-    .notice {
-      background: #332b16;
-      color: #fde68a;
-      padding: 12px;
-      border-radius: 10px;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 20px;
-    }
-
-    .panel {
-      background: #111e30;
-      border: 1px solid #263448;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 18px;
-    }
-
-    h2 {
-      font-size: 18px;
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin: 12px 0 7px;
-      color: #cbd5e1;
-      font-size: 14px;
-    }
-
-    select, button {
-      width: 100%;
-      padding: 13px;
-      border-radius: 9px;
-      border: 1px solid #334155;
-      font-size: 15px;
-    }
-
-    select {
-      background: #07111f;
-      color: white;
-    }
-
-    button {
-      margin-top: 16px;
-      background: #0284c7;
-      color: white;
-      border: none;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    button:active {
-      opacity: 0.8;
-    }
-
-    .signal {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
-
-    .muted {
-      color: #94a3b8;
-      font-size: 13px;
-      line-height: 1.6;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .metric {
-      background: #07111f;
-      border-radius: 10px;
-      padding: 14px;
-      overflow-wrap: anywhere;
-    }
-
-    .metric span {
-      display: block;
-      color: #94a3b8;
-      font-size: 12px;
-      margin-bottom: 8px;
-    }
-
-    .metric strong {
-      font-size: 17px;
-    }
-
-    footer {
-      color: #94a3b8;
-      text-align: center;
-      font-size: 12px;
-      padding: 20px 0;
-      line-height: 1.7;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global AI Trader</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;padding:16px;
+  background:#07111f;color:#eaf2ff;
+  font-family:Arial,sans-serif
+}
+header{text-align:center;padding:18px 0}
+header h1{color:#42e8c5;margin-bottom:8px}
+header p,.muted{color:#9aabc3;font-size:14px}
+.panel{
+  background:#101e30;border:1px solid #263a52;
+  border-radius:14px;padding:18px;
+  margin:15px 0
+}
+h2{font-size:19px;margin-top:0}
+label{display:block;margin:14px 0 7px}
+select,button{
+  width:100%;padding:13px;border-radius:9px;
+  font-size:15px
+}
+select{
+  background:#07111f;color:white;
+  border:1px solid #39516d
+}
+button{
+  background:#42e8c5;color:#07111f;
+  border:0;font-weight:bold;margin-top:18px
+}
+.grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:10px
+}
+.metric{
+  background:#07111f;padding:13px;border-radius:10px;
+  overflow-wrap:anywhere
+}
+.metric span{display:block;color:#9aabc3;font-size:13px}
+.metric strong{display:block;margin-top:9px;font-size:17px}
+.signal{
+  text-align:center;font-size:22px;font-weight:bold;
+  padding:16px;background:#07111f;border-radius:10px
+}
+.notice{
+  background:#352918;color:#ffe0a1;
+  padding:12px;border-radius:9px;font-size:13px
+}
+canvas{width:100%;height:180px}
+footer{text-align:center;color:#9aabc3;font-size:12px;padding:20px}
+</style>
 </head>
 
 <body>
-  <header>
-    <h1>🌍 Global AI Trader</h1>
-    <p>Market Analysis & Risk Management Dashboard</p>
-  </header>
+<header>
+<h1>🌍 Global AI Trader</h1>
+<p>Stocks • Options • Forex • Technical Analysis</p>
+<p>Demo Analysis Dashboard</p>
+</header>
 
-  <div class="notice">
-    DEMO VERSION: This dashboard does not use live market data.
-    Signals are educational examples, not financial advice.
-  </div>
+<section class="panel">
+<h2>📊 Market Analysis</h2>
 
-  <section class="panel">
-    <h2>📊 Market Analysis</h2>
+<label for="market">Select Market</label>
+<select id="market">
+<option value="stocks">Stock Market</option>
+<option value="options">Stock Options</option>
+<option value="forex">Forex Market</option>
+</select>
 
-    <label for="market">Select Market</label>
-    <select id="market">
-      <option value="stocks">Stock Market</option>
-      <option value="options">Stock Options</option>
-      <option value="forex">Forex Market</option>
-    </select>
+<label for="asset">Select Instrument</label>
+<select id="asset">
+<option value="NIFTY">NIFTY 50</option>
+<option value="BANKNIFTY">BANK NIFTY</option>
+<option value="SP500">S&P 500</option>
+<option value="EURUSD">EUR/USD</option>
+<option value="GBPUSD">GBP/USD</option>
+<option value="USDJPY">USD/JPY</option>
+</select>
 
-    <label for="asset">Select Instrument</label>
-    <select id="asset">
-      <option value="NIFTY">NIFTY 50 — Demo</option>
-      <option value="SP500">S&P 500 — Demo</option>
-      <option value="EURUSD">EUR/USD — Demo</option>
-      <option value="GBPUSD">GBP/USD — Demo</option>
-    </select>
+<label for="timeframe">Timeframe</label>
+<select id="timeframe">
+<option value="5m">5 Minutes</option>
+<option value="15m">15 Minutes</option>
+<option value="1h">1 Hour</option>
+<option value="4h">4 Hours</option>
+<option value="1d">1 Day</option>
+</select>
 
-    <label for="timeframe">Timeframe</label>
-    <select id="timeframe">
-      <option>5 Minutes</option>
-      <option>15 Minutes</option>
-      <option>1 Hour</option>
-      <option>4 Hours</option>
-      <option>1 Day</option>
-    </select>
+<button id="analyze">Run Demo Analysis</button>
+</section>
 
-    <button id="analyze">View Demo Analysis</button>
-  </section>
+<section class="panel">
+<h2>🤖 Analysis Result</h2>
+<p class="muted" id="instrument">Instrument: NIFTY</p>
+<div class="signal" id="signal">🟡 DEMO MODE</div>
+<p id="explanation" class="muted">
+Demo data only. No live signal available.
+</p>
+</section>
 
-  <section class="panel">
-    <h2>🤖 Analysis Result</h2>
-    <p class="muted" id="instrument">Instrument: NIFTY</p>
-    <div class="signal" id="signal">🟡 NO TRADE</div>
-    <p class="muted" id="explanation">
-      No live market data connected. No trading recommendation is available.
-    </p>
-  </section>
+<section class="panel">
+<h2>📈 Technical Indicators</h2>
+<div class="grid">
+<div class="metric"><span>Demo Price</span><strong id="price">—</strong></div>
+<div class="metric"><span>RSI (14)</span><strong id="rsi">—</strong></div>
+<div class="metric"><span>MACD (12,26)</span><strong id="macd">—</strong></div>
+<div class="metric"><span>EMA (12)</span><strong id="ema">—</strong></div>
+</div>
+</section>
 
-  <section class="panel">
-    <h2>📈 Technical Indicators</h2>
-    <div class="grid">
-      <div class="metric">
-        <span>RSI</span>
-        <strong>Not Available</strong>
-      </div>
-      <div class="metric">
-        <span>MACD</span>
-        <strong>Not Available</strong>
-      </div>
-      <div class="metric">
-        <span>Entry Price</span>
-        <strong>Not Available</strong>
-      </div>
-      <div class="metric">
-        <span>Stop Loss</span>
-        <strong>Not Available</strong>
-      </div>
-    </div>
-  </section>
+<section class="panel">
+<h2>📉 Demo Price History</h2>
+<canvas id="chart" width="600" height="220"></canvas>
+<p class="muted">Illustrative values only; not real market prices.</p>
+</section>
 
-  <footer>
-    Global AI Trader · Early Prototype<br>
-    Market data and AI analysis are not yet connected.<br>
-    Never trade using unverified demo signals.
-  </footer>
+<section class="panel">
+<h2>🛡️ Risk Management</h2>
+<div class="grid">
+<div class="metric"><span>Illustrative Entry</span><strong id="entry">—</strong></div>
+<div class="metric"><span>Illustrative Stop Loss</span><strong id="stop">—</strong></div>
+<div class="metric"><span>Illustrative Target</span><strong id="target">—</strong></div>
+<div class="metric"><span>Risk per Trade</span><strong>Not calculated</strong></div>
+</div>
+</section>
 
-  <script>
-    const analyzeButton = document.getElementById("analyze");
+<div class="notice">
+⚠️ DEMO ONLY: Prices are randomly generated for software testing.
+RSI and MACD are calculated from demo values. No live market feed,
+AI prediction, guaranteed accuracy, or trading recommendation is provided.
+Do not use these results to place trades.
+</div>
 
-    analyzeButton.addEventListener("click", function () {
-      const market = document.getElementById("market");
-      const asset = document.getElementById("asset");
-      const timeframe = document.getElementById("timeframe");
+<footer>
+Global AI Trader · Prototype<br>
+Live market data and secure API backend are not connected.
+</footer>
 
-      document.getElementById("instrument").textContent =
-        "Instrument: " + asset.value + " | " +
-        market.options[market.selectedIndex].text +
-        " | " + timeframe.value;
+<script>
+const $ = id => document.getElementById(id);
 
-      document.getElementById("signal").textContent =
-        "🟡 NO TRADE";
+function makeDemoPrices(){
+  let prices=[],p=100;
+  for(let i=0;i<80;i++){
+    p += (Math.random()-0.48)*2;
+    prices.push(p);
+  }
+  return prices;
+}
 
-      document.getElementById("explanation").textContent =
-        "Demo only. Live market data and a tested analysis engine " +
-        "must be connected before any real trading signal can be generated.";
-    });
-  </script>
+function calcRSI(prices,period=14){
+  if(prices.length<=period)return null;
+  let gain=0,loss=0;
+  for(let i=prices.length-period;i<prices.length;i++){
+    const d=prices[i]-prices[i-1];
+    if(d>0)gain+=d;
+    else loss-=d;
+  }
+  if(loss===0)return gain===0?50:100;
+  const rs=(gain/period)/(loss/period);
+  return 100-(100/(1+rs));
+}
+
+function ema(values,period){
+  const k=2/(period+1);
+  let result=values[0];
+  for(let i=1;i<values.length;i++){
+    result=values[i]*k+result*(1-k);
+  }
+  return result;
+}
+
+function calcMACD(prices){
+  if(prices.length<26)return null;
+  return ema(prices,12)-ema(prices,26);
+}
+
+function drawChart(prices){
+  const canvas=$("chart");
+  const ctx=canvas.getContext("2d");
+  const w=canvas.width,h=canvas.height;
+  ctx.clearRect(0,0,w,h);
+
+  const min=Math.min(...prices);
+  const max=Math.max(...prices);
+  const range=max-min||1;
+
+  ctx.strokeStyle="#42e8c5";
+  ctx.lineWidth=3;
+  ctx.beginPath();
+
+  prices.forEach((p,i)=>{
+    const x=i*(w/(prices.length-1));
+    const y=h-15-((p-min)/range)*(h-30);
+    if(i===0)ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+}
+
+function analyze(){
+  const market=$("market").value;
+  const asset=$("asset").value;
+  const timeframe=$("timeframe").value;
+
+  const prices=makeDemoPrices();
+  const price=prices[prices.length-1];
+  const rsi=calcRSI(prices);
+  const macd=calcMACD(prices);
+  const ema12=ema(prices,12);
+
+  $("instrument").textContent=
+    asset+" | "+market.toUpperCase()+" | "+timeframe;
+
+  $("price").textContent=price.toFixed(2);
+  $("rsi").textContent=rsi.toFixed(2);
+  $("macd").textContent=macd.toFixed(4);
+  $("ema").textContent=ema12.toFixed(2);
+
+  $("signal").textContent="🟡 DEMO — NO TRADE";
+  $("explanation").textContent=
+    "Indicators calculated from randomly generated demo prices. "+
+    "These values do not represent the selected instrument.";
+
+  $("entry").textContent="Not a real entry";
+  $("stop").textContent="Not calculated";
+  $("target").textContent="Not calculated";
+
+  drawChart(prices);
+}
+
+$("analyze").addEventListener("click",analyze);
+analyze();
+</script>
 </body>
 </html>
